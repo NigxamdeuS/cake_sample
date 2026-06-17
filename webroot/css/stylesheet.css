@@ -1,0 +1,548 @@
+@charset "UTF-8";
+
+/* ---- タイポグラフィ ---- */
+h3 {
+	margin: 0 0 20px;
+	padding: 0;
+	font-size: 1.25rem;
+	font-weight: 700;
+	color: var(--color-heading, #1a1a2e);
+}
+
+article h3.title {
+	margin-bottom: 24px;
+}
+
+/* ---- リンク・ツールバー ---- */
+div.regist_link {
+	padding: 0 0 16px;
+	text-align: right;
+}
+
+div.regist_link a {
+	font-weight: 500;
+}
+
+/* ---- テーブル ---- */
+table {
+	width: 100%;
+	background-color: var(--color-surface, #ffffff);
+	border-collapse: separate;
+	border-spacing: 0;
+	margin: 0 0 8px;
+	border: 1px solid var(--color-border-light, #e8eaed);
+	border-radius: var(--radius-control, 8px);
+	overflow: hidden;
+}
+
+table td,
+table th {
+	border: none;
+	border-bottom: 1px solid var(--color-border-light, #e8eaed);
+	padding: 12px 14px;
+	text-align: left;
+	font-size: 0.875rem;
+}
+
+table tr:last-child td {
+	border-bottom: none;
+}
+
+table th {
+	background-color: #f5f7f8;
+	font-weight: 600;
+	color: var(--color-heading, #1a1a2e);
+}
+
+table td {
+	color: var(--color-text, #333333);
+}
+
+td.data {
+	width: auto;
+}
+
+th.empId { width: 72px; }
+th.empName { width: 96px; }
+th.gender { width: 64px; }
+th.address { width: 96px; }
+th.birthday { width: 110px; }
+th.authority { width: 72px; }
+th.deptName { width: 88px; }
+th.delete,
+td.delete {
+	width: 96px;
+	min-width: 96px;
+	text-align: center;
+	vertical-align: middle;
+	padding: 8px 6px;
+	box-sizing: border-box;
+}
+
+table.list_table button.btn-delete {
+	display: inline-block;
+	margin: 0;
+	padding: 0.45em 0.9em;
+	font-family: inherit;
+	font-size: 0.8125rem;
+	font-weight: 700;
+	line-height: 1.3;
+	color: #ffffff;
+	background-color: #0c0734;
+	border: none;
+	border-radius: 4px;
+	border-bottom: solid 4px #070323;
+	box-sizing: border-box;
+	white-space: nowrap;
+	cursor: default;
+	-webkit-appearance: none;
+	appearance: none;
+}
+
+table.list_table button.btn-delete:active {
+	transform: translateY(4px);
+	border-bottom: solid 4px transparent;
+}
+
+.btn-square-shadow {
+	display: inline-block;
+	padding: 0.45em 0.85em;
+	text-decoration: none;
+	background: #0c0734;
+	color: #fff;
+	border-bottom: solid 4px #070323;
+	border-radius: 4px;
+	font-size: 0.8125rem;
+	font-weight: 700;
+	line-height: 1.3;
+	cursor: default;
+	box-sizing: border-box;
+	white-space: nowrap;
+}
+
+.btn-square-shadow:active {
+	-webkit-transform: translateY(4px);
+	transform: translateY(4px);
+	box-shadow: 0 0 1px rgba(0, 0, 0, 0.2);
+	border-bottom: none;
+}
+
+.btn-square-shadow-delete {
+	background: #0c0734;
+	border-bottom-color: #070323;
+}
+
+/* ---- 入力フォーム（検索・登録） ---- */
+div.form {
+	display: flex;
+	align-items: flex-start;
+	width: 100%;
+	max-width: 560px;
+	margin: 0 auto 16px;
+	gap: 12px;
+}
+
+div.label {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-end;
+	width: 140px;
+	min-height: 40px;
+	padding: 0;
+	text-align: right;
+	font-size: 0.875rem;
+	font-weight: 500;
+	color: var(--color-text-muted, #5c5c5c);
+	flex-shrink: 0;
+}
+
+div.input {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	flex-wrap: wrap;
+	flex: 1;
+	min-height: 40px;
+	text-align: left;
+	font-size: 0.9375rem;
+	color: var(--color-text, #333333);
+	gap: 8px;
+}
+
+div.update {
+	max-width: 560px;
+	width: 100%;
+	margin: 0 auto;
+	box-sizing: border-box;
+}
+
+input[type=text],
+input[type=password],
+select {
+	font-size: 0.9375rem;
+	font-family: inherit;
+	color: var(--color-text, #333333);
+	border: 1px solid var(--color-border, #d0d5dd);
+	border-radius: var(--radius-control, 8px);
+	padding: 10px 12px;
+	background-color: #ffffff;
+	outline: none;
+	transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+input[type=text]:focus,
+input[type=password]:focus,
+select:focus {
+	border-color: var(--color-primary, #009688);
+	box-shadow: 0 0 0 3px rgba(0, 150, 136, 0.15);
+}
+
+div.input input[type=text],
+div.input input[type=password] {
+	flex: 1;
+	min-width: 0;
+	width: 100%;
+	max-width: 100%;
+	box-sizing: border-box;
+}
+
+select {
+	min-width: 0;
+	max-width: 100%;
+	width: 100%;
+	cursor: pointer;
+}
+
+/* 登録・更新フォーム：狭い幅ではラベルと入力を折り返す */
+div.update > form > div.form {
+	flex-wrap: wrap;
+	max-width: 100%;
+}
+
+div.update > form > div.label {
+	flex: 0 0 8.75rem;
+	max-width: 100%;
+}
+
+div.update > form > div.input {
+	flex: 1 1 12rem;
+	min-width: 0;
+	max-width: 100%;
+}
+
+input[type=radio] {
+	accent-color: var(--color-primary, #009688);
+}
+
+/* ---- 旧ログインフォーム（互換） ---- */
+.login_form {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+}
+
+div.login_label {
+	width: auto;
+	min-width: 120px;
+	height: auto;
+	padding: 0;
+	text-align: left;
+	font-weight: 500;
+	color: var(--color-text-muted, #5c5c5c);
+}
+
+div.login_input {
+	width: auto;
+	flex: 1;
+	height: auto;
+	text-align: left;
+}
+
+/* ---- メッセージ ---- */
+div.message {
+	min-height: 120px;
+	padding: 24px 16px;
+	text-align: center;
+}
+
+div.message p {
+	margin: 0 0 12px;
+	font-size: 1rem;
+	color: var(--color-text, #333333);
+}
+
+div.message a {
+	font-weight: 500;
+}
+
+p.form-error:empty,
+.update > form > p:empty {
+	display: none;
+}
+
+.page-login .login-error {
+	margin: 0 0 12px;
+	font-size: 0.875rem;
+	color: #c62828;
+	text-align: center;
+}
+
+/* ---- ボタン ---- */
+input[type=submit],
+button[type=submit],
+.login-submit {
+	font-family: inherit;
+	font-size: 0.9375rem;
+	font-weight: 600;
+	color: #ffffff;
+	background-color: #0c0734;
+	border: none;
+	border-radius: var(--radius-control, 8px);
+	padding: 10px 20px;
+	cursor: pointer;
+	transition: background-color 0.15s ease;
+}
+
+input[type=submit]:hover,
+button[type=submit]:hover,
+.login-submit:hover {
+	background-color: #18104d;
+}
+
+input[type=submit]:active,
+button[type=submit]:active,
+.login-submit:active {
+	background-color: #070323;
+}
+
+div.form div.input input[type=submit][value="戻る"],
+form input[type=submit][value="戻る"] {
+	background-color: #0c0734;
+	color: #ffffff;
+	border: 1px solid #1f1857;
+}
+
+div.form div.input input[type=submit][value="戻る"]:hover,
+form input[type=submit][value="戻る"]:hover {
+	background-color: #18104d;
+	color: #ffffff;
+}
+
+div.form + form .form {
+	margin-top: 8px;
+}
+
+/* 登録/更新フォームの送信ボタン行は中央寄せ */
+div.update > form > div.form.btn-row {
+	justify-content: center;
+}
+
+div.update > form > div.form.btn-row > div.label.is-empty {
+	display: none;
+}
+
+div.update > form > div.form.btn-row > div.input {
+	flex: 0 0 auto;
+	justify-content: center;
+}
+
+/* 入力フォーム系画面はカード横幅を絞って中央に */
+article.form-article {
+	max-width: 760px;
+	margin: 0 auto;
+}
+
+/* ---- ログインカード ---- */
+.page-login {
+	min-height: 100vh;
+}
+
+.page-login .login-card {
+	width: 100%;
+	max-width: 420px;
+	background-color: var(--color-surface, #ffffff);
+	border-radius: var(--radius-card, 16px);
+	box-shadow: var(--shadow-card);
+	padding: 40px 36px 36px;
+	box-sizing: border-box;
+}
+
+.page-login .login-card-title {
+	margin: 0 0 28px;
+	font-size: 1.35rem;
+	font-weight: 700;
+	color: var(--color-heading, #1a1a2e);
+	text-align: center;
+	line-height: 1.4;
+}
+
+.page-login .login-error:empty {
+	display: none;
+}
+
+.page-login .login-card-form {
+	display: flex;
+	flex-direction: column;
+}
+
+.page-login .login-field {
+	margin-bottom: 20px;
+}
+
+.page-login .login-field-label {
+	display: block;
+	margin-bottom: 8px;
+	font-size: 0.875rem;
+	font-weight: 500;
+	color: var(--color-text-muted, #5c5c5c);
+}
+
+.page-login .login-field-input {
+	width: 100%;
+	box-sizing: border-box;
+	padding: 12px 14px;
+	font-size: 1rem;
+}
+
+.page-login .login-remember {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	margin: -8px 0 20px;
+	font-size: 0.875rem;
+	color: var(--color-text-muted, #5c5c5c);
+}
+
+.page-login .login-remember input[type="checkbox"] {
+	width: 16px;
+	height: 16px;
+	margin: 0;
+	accent-color: var(--color-primary, #009688);
+}
+
+.page-login .login-remember label {
+	cursor: pointer;
+}
+
+.page-login .login-submit {
+	width: 100%;
+	margin-top: 8px;
+	padding: 14px 16px;
+	font-size: 1rem;
+	font-weight: 700;
+}
+
+/* ---- レスポンシブ（登録・更新フォーム：1100px以下で縦並び） ---- */
+@media (max-width: 1100px) {
+	article .update,
+	div.update {
+		max-width: none;
+		width: 100%;
+	}
+
+	div.update > form > div.form,
+	article div.update div.form {
+		flex-direction: column;
+		flex-wrap: nowrap;
+		align-items: stretch;
+		max-width: none;
+		width: 100%;
+		gap: 6px;
+		margin-bottom: 14px;
+	}
+
+	div.update > form > div.label,
+	article div.update div.label {
+		width: 100%;
+		flex: none;
+		min-height: 0;
+		align-items: flex-start;
+		text-align: left;
+		padding-bottom: 2px;
+	}
+
+	div.update > form > div.input,
+	article div.update div.input {
+		width: 100%;
+		flex: none;
+		min-width: 0;
+		min-height: 0;
+	}
+
+	div.update > form > div.input input[type=text],
+	div.update > form > div.input input[type=password],
+	article div.update div.input input[type=text],
+	article div.update div.input input[type=password] {
+		min-width: 0;
+		width: 100%;
+	}
+
+	div.update > form select,
+	article div.update select {
+		width: 100%;
+		min-width: 0;
+		max-width: 100%;
+	}
+
+	div.regist_link {
+		text-align: left;
+	}
+}
+
+@media (max-width: 640px) {
+	.page-login .login-card {
+		max-width: none;
+		padding: 28px 20px 24px;
+		border-radius: 12px;
+	}
+
+	.page-login .login-card-title {
+		font-size: 1.2rem;
+		margin-bottom: 22px;
+	}
+
+	input[type=submit],
+	button[type=submit] {
+		width: 100%;
+		box-sizing: border-box;
+	}
+
+	div.form div.input input[type=submit] {
+		width: 100%;
+		min-width: 0;
+	}
+
+	aside input[type=submit] {
+		width: 100%;
+	}
+}
+
+@media (max-width: 900px) {
+	/* 社員一覧：狭い画面では横スクロールで全列を維持 */
+	article:has(table.list_table) {
+		overflow-x: auto;
+		-webkit-overflow-scrolling: touch;
+	}
+
+	table.list_table {
+		min-width: 680px;
+	}
+
+	table td,
+	table th {
+		padding: 10px 10px;
+		font-size: 0.8125rem;
+	}
+}
+
+@media (max-width: 480px) {
+	h3 {
+		font-size: 1.1rem;
+	}
+
+	div.message {
+		padding: 20px 8px;
+		min-height: 0;
+	}
+}

@@ -1,0 +1,39 @@
+@charset "UTF-8";
+
+/* ---- particles.js（デモ背景 + レイヤー） ---- */
+
+canvas {
+	display: block;
+	vertical-align: bottom;
+}
+
+#particles-js {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 0;
+	background-color: #0c0734;
+	background-image: url("");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: 50% 50%;
+}
+
+.login-main,
+body > .content,
+.site-header,
+header.site-header {
+	position: relative;
+	z-index: 1;
+}
+
+header.site-header,
+.site-header.login-header {
+	z-index: 2;
+}
+
+body {
+	overflow-x: clip;
+}
