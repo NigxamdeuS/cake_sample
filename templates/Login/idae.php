@@ -2,7 +2,6 @@
 /**
  * @var \App\View\AppView $this
  */
-$tileCount = 1200;
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -20,25 +19,25 @@ $tileCount = 1200;
             color: #fff;
             font-family: "Hiragino Sans", "Yu Gothic", sans-serif;
         }
-        .idae-wall {
+        .idae-screen {
             position: fixed;
             inset: 0;
             display: flex;
-            flex-wrap: wrap;
-            align-content: flex-start;
-            gap: 0.1em 0.35em;
-            padding: 0.2em 0.15em;
-            font-weight: 900;
-            font-size: clamp(0.55rem, 2.4vw, 1.25rem);
-            line-height: 1.05;
-            letter-spacing: 0.02em;
-            user-select: none;
-            pointer-events: none;
+            align-items: center;
+            justify-content: center;
+            padding: 0.5vmin;
         }
-        .idae-cell {
+        .idae-text {
+            display: block;
+            width: 100%;
+            max-width: 100%;
+            text-align: center;
+            font-weight: 900;
+            line-height: 0.95;
+            letter-spacing: 0.02em;
             white-space: nowrap;
-            opacity: 0.95;
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+            font-size: min(28vw, 42vh);
+            text-shadow: 0 0.03em 0.15em rgba(0, 0, 0, 0.5);
         }
         .idae-back {
             position: fixed;
@@ -53,16 +52,13 @@ $tileCount = 1200;
             color: rgba(255, 255, 255, 0.9);
             font-size: 0.95rem;
             text-decoration: none;
-            pointer-events: auto;
         }
-        .idae-back:hover { color: #fff; background: rgba(12, 7, 52, 0.95); }
+        .idae-back:hover { color: #fff; }
     </style>
 </head>
 <body>
-    <div class="idae-wall" aria-hidden="true">
-        <?php for ($i = 0; $i < $tileCount; $i++) : ?>
-            <span class="idae-cell">暇人かよ</span>
-        <?php endfor; ?>
+    <div class="idae-screen" aria-live="polite">
+        <p class="idae-text">暇人かよ</p>
     </div>
     <?= $this->Html->link('ログインに戻る', '/', ['class' => 'idae-back']) ?>
 </body>
