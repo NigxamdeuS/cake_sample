@@ -84,8 +84,6 @@ class UpdateController extends AppController
         $employee = $this->Employees->get($empId);
         $employee = $this->Employees->patchEntity($employee, $data);
         if (!$this->Employees->save($employee)) {
-            $this->Flash->error('社員更新に失敗しました。');
-
             return $this->redirect('/update_input');
         }
 

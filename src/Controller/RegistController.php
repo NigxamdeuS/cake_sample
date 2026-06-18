@@ -70,16 +70,12 @@ class RegistController extends AppController
         $employeeForm = $this->request->getData();
         $errors = $this->validateEmployeeForm($employeeForm);
         if ($errors !== []) {
-            $this->Flash->error('入力内容を確認してください。');
-
             return $this->redirect('/regist_input');
         }
 
         $data = $this->prepareSaveData($employeeForm);
         $employee = $this->Employees->newEntity($data);
         if (!$this->Employees->save($employee)) {
-            $this->Flash->error('社員登録に失敗しました。');
-
             return $this->redirect('/regist_input');
         }
 
