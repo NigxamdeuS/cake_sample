@@ -2,6 +2,7 @@
 /**
  * @var \App\View\AppView $this
  */
+$tileCount = 1200;
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -19,39 +20,49 @@
             color: #fff;
             font-family: "Hiragino Sans", "Yu Gothic", sans-serif;
         }
-        .idae-screen {
+        .idae-wall {
             position: fixed;
             inset: 0;
             display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 2vmin;
-        }
-        .idae-text {
-            width: 100%;
-            text-align: center;
+            flex-wrap: wrap;
+            align-content: flex-start;
+            gap: 0.1em 0.35em;
+            padding: 0.2em 0.15em;
             font-weight: 900;
+            font-size: clamp(0.55rem, 2.4vw, 1.25rem);
             line-height: 1.05;
-            letter-spacing: 0.08em;
-            font-size: clamp(3rem, 18vw, 14rem);
-            text-shadow: 0 0.04em 0.12em rgba(0, 0, 0, 0.45);
-            word-break: keep-all;
+            letter-spacing: 0.02em;
+            user-select: none;
+            pointer-events: none;
+        }
+        .idae-cell {
+            white-space: nowrap;
+            opacity: 0.95;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
         }
         .idae-back {
             position: fixed;
+            z-index: 10;
             bottom: 2rem;
             left: 50%;
             transform: translateX(-50%);
-            color: rgba(255, 255, 255, 0.75);
+            padding: 0.5rem 1rem;
+            background: rgba(12, 7, 52, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            border-radius: 4px;
+            color: rgba(255, 255, 255, 0.9);
             font-size: 0.95rem;
-            text-decoration: underline;
+            text-decoration: none;
+            pointer-events: auto;
         }
-        .idae-back:hover { color: #fff; }
+        .idae-back:hover { color: #fff; background: rgba(12, 7, 52, 0.95); }
     </style>
 </head>
 <body>
-    <div class="idae-screen" aria-live="polite">
-        <p class="idae-text">暇人かよ</p>
+    <div class="idae-wall" aria-hidden="true">
+        <?php for ($i = 0; $i < $tileCount; $i++) : ?>
+            <span class="idae-cell">暇人かよ</span>
+        <?php endfor; ?>
     </div>
     <?= $this->Html->link('ログインに戻る', '/', ['class' => 'idae-back']) ?>
 </body>
