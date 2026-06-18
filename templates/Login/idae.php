@@ -22,21 +22,20 @@
         .idae-screen {
             position: fixed;
             inset: 0;
+            bottom: 4rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 0.5vmin;
+            padding: 0 1vmin;
         }
         .idae-text {
-            display: block;
-            width: 100%;
-            max-width: 100%;
+            display: inline-block;
             text-align: center;
             font-weight: 900;
-            line-height: 0.95;
-            letter-spacing: 0.02em;
+            line-height: 1;
+            letter-spacing: 0;
             white-space: nowrap;
-            font-size: min(28vw, 42vh);
+            font-size: 20vw;
             text-shadow: 0 0.03em 0.15em rgba(0, 0, 0, 0.5);
         }
         .idae-back {
@@ -61,5 +60,33 @@
         <p class="idae-text">暇人かよ</p>
     </div>
     <?= $this->Html->link('ログインに戻る', '/', ['class' => 'idae-back']) ?>
+    <script>
+        (function () {
+            var text = document.querySelector('.idae-text');
+            var maxW = 0.98;
+            var maxH = 0.88;
+
+            function fit() {
+                var lo = 16;
+                var hi = 4000;
+                while (lo < hi) {
+                    var mid = Math.ceil((lo + hi) / 2);
+                    text.style.fontSize = mid + 'px';
+                    var ok =
+                        text.scrollWidth <= window.innerWidth * maxW &&
+                        text.scrollHeight <= window.innerHeight * maxH;
+                    if (ok) {
+                        lo = mid;
+                    } else {
+                        hi = mid - 1;
+                    }
+                }
+                text.style.fontSize = lo + 'px';
+            }
+
+            fit();
+            window.addEventListener('resize', fit);
+        })();
+    </script>
 </body>
 </html>
